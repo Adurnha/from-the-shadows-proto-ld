@@ -10,6 +10,5 @@ public class DisableTrigger : MonoBehaviour
         {
             torch.OnChildDisable();
         }
-        Debug.Log("Test");
     }
 }
