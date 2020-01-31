@@ -83,8 +83,7 @@ public class PlatformMaster : MonoBehaviour
                     }
                     else
                     {
-                        //platformPart.GetComponent<MeshRenderer>().material = shadowMaterial;
-                        platformPart.GetComponent<MeshRenderer>().material = lightMaterial;
+                        platformPart.GetComponent<MeshRenderer>().material = shadowMaterial;
                     }
                 }
             }
@@ -104,8 +103,7 @@ public class PlatformMaster : MonoBehaviour
                     }
                     else
                     {
-                        //platformPart.GetComponent<MeshRenderer>().material = lightMaterial;
-                        platformPart.GetComponent<MeshRenderer>().material = shadowMaterial;
+                        platformPart.GetComponent<MeshRenderer>().material = lightMaterial;
                     }
                 }
             }
