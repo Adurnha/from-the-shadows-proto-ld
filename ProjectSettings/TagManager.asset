@@ -17,6 +17,8 @@ TagManager:
   - Reflector
   - LightDetector
   - Ray
+  - DarkPlayer
+  - LightPlayer
   layers:
   - Default
   - TransparentFX

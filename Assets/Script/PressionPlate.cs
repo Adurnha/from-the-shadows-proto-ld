@@ -9,14 +9,14 @@ public class PressionPlate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" || other.tag == "DarkPlayer" || other.tag == "LightPlayer")
         {
             mecanism.ActivateMecanism();
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" || other.tag == "DarkPlayer" || other.tag == "LightPlayer")
         {
             mecanism.DeactivateMecanism();
         }
