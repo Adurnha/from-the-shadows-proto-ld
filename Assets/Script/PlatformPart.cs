@@ -47,8 +47,6 @@ public class PlatformPart : MonoBehaviour, IPlatform
 
             previousLightSources = lightSource;
             previouslyLightedByPureShadow = IsLightedByPureShadow;
-
-            Debug.Log("Update");
         }
     }
     private void ShowPlatform()

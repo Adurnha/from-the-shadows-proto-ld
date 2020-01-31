@@ -6,6 +6,9 @@ public class DisableTrigger : MonoBehaviour
 {
     private void OnDisable()
     {
-        this.transform.parent.GetComponent<Torch>().OnChildDisable();
+        if(this.transform.parent.TryGetComponent(out Torch torch))
+        {
+            torch.OnChildDisable();
+        }
     }
 }
