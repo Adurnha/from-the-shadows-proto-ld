@@ -41,7 +41,7 @@ public class PlatformMaster : MonoBehaviour
             platform.transform.parent = this.transform;
 
             platform.transform.position = transform.parent.position;
-            platform.transform.rotation = transform.parent.rotation;
+            //platform.transform.rotation = transform.parent.rotation;
         }
         else
         {
@@ -49,12 +49,10 @@ public class PlatformMaster : MonoBehaviour
             platform.transform.parent = this.transform;
 
             platform.transform.position = transform.parent.position;
-            platform.transform.rotation = transform.parent.rotation;
-
-
+            //platform.transform.rotation = transform.parent.rotation;
         }
-
-        this.transform.localScale = this.transform.parent.localScale;
+        this.transform.localScale = this.transform.parent.lossyScale;
+        this.transform.localRotation = transform.parent.rotation;
 
 
 

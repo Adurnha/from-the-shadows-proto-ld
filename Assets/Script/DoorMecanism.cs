@@ -11,6 +11,8 @@ public class DoorMecanism : Mecanism
 
     public Direction direction = Direction.Up;
 
+    public int activatedTimes = 0;
+
     private void Start()
     {
         targetedPosition = this.transform.position;
@@ -23,27 +25,37 @@ public class DoorMecanism : Mecanism
     }
     public override void ActivateMecanism()
     {
-        switch(direction)
+        activatedTimes++;
+
+        if (activatedTimes == 1)
         {
-            case Direction.Up:
-                targetedPosition = new Vector3(this.transform.position.x, this.transform.position.y + this.transform.localScale.x, this.transform.position.z);
-                break;
-            case Direction.Down:
-                targetedPosition = new Vector3(this.transform.position.x, this.transform.position.y - this.transform.localScale.x, this.transform.position.z);
-                break;
-            case Direction.Left:
-                targetedPosition = new Vector3(this.transform.position.x - this.transform.localScale.x, this.transform.position.y, this.transform.position.z);
-                break;
-            case Direction.Right:
-                targetedPosition = new Vector3(this.transform.position.x + this.transform.localScale.x, this.transform.position.y, this.transform.position.z);
-                break;
-            default:
-                break;
+            switch (direction)
+            {
+                case Direction.Up:
+                    targetedPosition = new Vector3(basePosition.x, basePosition.y + this.transform.localScale.x, basePosition.z);
+                    break;
+                case Direction.Down:
+                    targetedPosition = new Vector3(basePosition.x, basePosition.y - this.transform.localScale.x, basePosition.z);
+                    break;
+                case Direction.Left:
+                    targetedPosition = new Vector3(basePosition.x - this.transform.localScale.x, basePosition.y, basePosition.z);
+                    break;
+                case Direction.Right:
+                    targetedPosition = new Vector3(basePosition.x + this.transform.localScale.x, basePosition.y, basePosition.z);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
     public override void DeactivateMecanism()
     {
-        targetedPosition = basePosition;
+        activatedTimes--;
+
+        if (activatedTimes == 0)
+        {
+            targetedPosition = basePosition;
+        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    GameObject[] players;
+    PlayerController[] players;
 
     public bool hasControl = true;
 
@@ -17,7 +17,7 @@ public class CameraManager : MonoBehaviour
 
     void Start()
     {
-        players = GameObject.FindGameObjectsWithTag("Player");
+        players = FindObjectsOfType<PlayerController>();
         cameraStartingPosition = this.transform.position;
     }
 

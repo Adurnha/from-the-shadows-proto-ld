@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 7128286240814455456}
   m_Layer: 10
   m_Name: LightPlayer
-  m_TagString: Player
+  m_TagString: LightPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,6 +343,10 @@ MonoBehaviour:
   moveSpeed: 15
   jumpSpeed: 23
   gravityForce: 60
+  switchType: 0
+  lightMaterial: {fileID: 2100000, guid: bbd837e1173f6cb4ba7dea5ca4af9842, type: 2}
+  shadowMaterial: {fileID: 2100000, guid: 3f3680543047cc54695f0bb5ce2f1e63, type: 2}
+  otherPlayer: {fileID: 0}
 --- !u!135 &866982102538334581
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 5891687082911786178}
   m_Layer: 10
   m_Name: DarkPlayer
-  m_TagString: Player
+  m_TagString: DarkPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,6 +242,10 @@ MonoBehaviour:
   moveSpeed: 15
   jumpSpeed: 23
   gravityForce: 60
+  switchType: 0
+  lightMaterial: {fileID: 2100000, guid: bbd837e1173f6cb4ba7dea5ca4af9842, type: 2}
+  shadowMaterial: {fileID: 2100000, guid: 3f3680543047cc54695f0bb5ce2f1e63, type: 2}
+  otherPlayer: {fileID: 0}
 --- !u!135 &4550776505286856471
 SphereCollider:
   m_ObjectHideFlags: 0

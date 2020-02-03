@@ -19,30 +19,96 @@ public class PlayerController : MonoBehaviour
     private bool hasDoubleJumped = false;
     private bool hasJumped = false;
 
+    public enum SwitchType { SameCharacter, BetweenTwoCharacters };
+    public SwitchType switchType;
+
+    public Material lightMaterial;
+    public Material shadowMaterial;
+
+
+    public PlayerController otherPlayer;
+
+
     private Vector3 moveDirection;
 
     private CharacterController controller;
 
-    private Vector3 velocity;
+    private bool isShadowPlayer = false;
+    private bool previouslyShadowPlayer = false;
 
     private List<IInteractable> itemToInteractWith = new List<IInteractable>();
 
+    private bool hasSwitched = false;
 
     private void Start()
     {
         controller = this.GetComponent<CharacterController>();
     }
 
-
     private void Update()
     {
-
         if (Input.GetButtonDown("p" + playerNumber + "_Interact"))
         {
             foreach (IInteractable item in itemToInteractWith)
             {
                 item.Interact(this);
             }
+        }
+
+        if (playerNumber == 1 && Input.GetKeyDown(KeyCode.C))
+        {
+            isShadowPlayer = !isShadowPlayer;
+        }
+
+        if (isShadowPlayer != previouslyShadowPlayer)
+        {
+            if (switchType == SwitchType.SameCharacter)
+            {
+                this.transform.GetChild(3).gameObject.SetActive(!isShadowPlayer);
+
+                if (isShadowPlayer)
+                {
+                    this.GetComponent<MeshRenderer>().material = shadowMaterial;
+                    this.transform.GetChild(0).GetComponent<MeshRenderer>().material = shadowMaterial;
+                    this.transform.GetChild(1).GetComponent<MeshRenderer>().material = shadowMaterial;
+                    this.transform.GetChild(2).GetComponent<MeshRenderer>().material = shadowMaterial;
+                }
+                else
+                {
+                    this.GetComponent<MeshRenderer>().material = lightMaterial;
+                    this.transform.GetChild(0).GetComponent<MeshRenderer>().material = lightMaterial;
+                    this.transform.GetChild(1).GetComponent<MeshRenderer>().material = lightMaterial;
+                    this.transform.GetChild(2).GetComponent<MeshRenderer>().material = lightMaterial;
+                }
+            }
+
+            if (switchType == SwitchType.BetweenTwoCharacters && !hasSwitched)
+            {
+                //if(this.tag == "LightPlayer")
+                //{
+                //    Debug.Log("LP " + this.tag);
+                //    otherPlayer = GameObject.FindGameObjectWithTag("DarkPlayer").GetComponent<PlayerController>();
+
+                //    this.playerNumber = 2;
+                //    otherPlayer.playerNumber = 1;
+
+                //    hasSwitched = true;
+                //}
+
+                //if(this.tag == "DarkPlayer")
+                //{
+                //    Debug.Log("DP " + this.tag);
+                //    otherPlayer = GameObject.FindGameObjectWithTag("LightPlayer").GetComponent<PlayerController>();
+
+                //    this.playerNumber = 2;
+                //    otherPlayer.playerNumber = 1;
+
+                //    hasSwitched = true;
+                //}
+            }
+
+            previouslyShadowPlayer = isShadowPlayer;
+            hasSwitched = false;
         }
 
         if (controller.isGrounded)
