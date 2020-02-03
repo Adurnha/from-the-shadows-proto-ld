@@ -6,15 +6,15 @@ public class PureOrb : MonoBehaviour, IInteractable
 {
     private bool hasInteracted = false;
 
-    [SerializeField]
-    private bool isShadow;
+    public bool isShadow;
 
-    [SerializeField]
-    private Material shadowMaterial;
+    public Material shadowMaterial;
+    public Material lightMaterial;
 
     private bool isEquipped = false;
 
     private List<IPlatform> lightedPlatforms = new List<IPlatform>();
+    public void InteractAutreSens(PlayerController playerController) { }
 
     void Awake()
     {
@@ -23,6 +23,12 @@ public class PureOrb : MonoBehaviour, IInteractable
             this.transform.GetChild(1).gameObject.GetComponent<Light>().color = Color.blue;
             this.transform.GetChild(1).gameObject.GetComponent<Light>().intensity = 5f;
             this.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material = shadowMaterial;
+        }
+        else
+        {
+            this.transform.GetChild(1).gameObject.GetComponent<Light>().color = Color.yellow;
+            this.transform.GetChild(1).gameObject.GetComponent<Light>().intensity = 2f;
+            this.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material = lightMaterial;
         }
     }
     public void Interact(PlayerController playerController)

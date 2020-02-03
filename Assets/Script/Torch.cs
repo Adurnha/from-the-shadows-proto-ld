@@ -8,6 +8,8 @@ public class Torch : MonoBehaviour, IInteractable
 
     private List<IPlatform> lightedPlatforms = new List<IPlatform>();
 
+    public void InteractAutreSens(PlayerController playerController) { }
+
     public void Interact(PlayerController playerController)
     {
         if(isLighted)

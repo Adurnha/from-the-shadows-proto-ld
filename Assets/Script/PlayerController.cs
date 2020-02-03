@@ -55,6 +55,14 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (Input.GetButtonDown("p" + playerNumber + "_InteractAutreSens"))
+        {
+            foreach (IInteractable item in itemToInteractWith)
+            {
+                item.InteractAutreSens(this);
+            }
+        }
+
         if (playerNumber == 1 && Input.GetKeyDown(KeyCode.C))
         {
             isShadowPlayer = !isShadowPlayer;

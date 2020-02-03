@@ -8,6 +8,7 @@ public class Lever : MonoBehaviour, IInteractable
     Mecanism mecanism;
 
     private bool isActivated = false;
+    public void InteractAutreSens(PlayerController playerController) { }
 
     public void Interact(PlayerController playerController)
     {
