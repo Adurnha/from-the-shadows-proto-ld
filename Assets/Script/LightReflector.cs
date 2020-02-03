@@ -13,7 +13,7 @@ public class LightReflector : MonoBehaviour, IInteractable
     }
     public void InteractAutreSens(PlayerController playerController)
     {
-        if (playerController.playerNumber == 1)
+        if (playerController.playerNumber == 1) 
             this.transform.parent.Rotate(new Vector3(0, 0, 22.5f));
         if (playerController.playerNumber == 2)
             this.transform.parent.Rotate(new Vector3(0, 0, -22.5f));
