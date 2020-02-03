@@ -28,7 +28,7 @@ public class PrismGrosBoss : MonoBehaviour
                     ray.transform.parent = this.transform;
 
                     ray.transform.right = transform.forward;
-                    ray.transform.localScale = new Vector3(hit.distance, 1, 1);
+                    ray.transform.localScale = new Vector3(hit.distance, 5, 5);
                     ray.transform.position = this.transform.GetChild(0).GetChild(1).transform.position;
 
                     raySpawned = true;
