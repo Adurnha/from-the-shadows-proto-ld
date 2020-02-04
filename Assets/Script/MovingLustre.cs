@@ -11,8 +11,19 @@ public class MovingLustre : MonoBehaviour
     public enum Direction { Left, Right }
     public Direction direction;
 
+    private Transform lustreMesh;
+    private Transform chain;
+
     private float angle;
 
+    private void Start()
+    {
+        lustreMesh = this.transform.GetChild(0);
+        chain = this.transform.GetChild(1);
+        Debug.Log(Vector3.Distance(chain.position, lustreMesh.position));
+
+        chain.localScale = new Vector3(1f, Vector3.Distance(chain.position, lustreMesh.position)/2f, 1f);
+    }
 
     void Update()
     {
