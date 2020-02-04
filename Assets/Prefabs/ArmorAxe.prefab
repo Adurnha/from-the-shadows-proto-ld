@@ -324,6 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 3
   firstHitDelay: 2
+  timeDown: 1
 --- !u!1 &406117742197049345
 GameObject:
   m_ObjectHideFlags: 0
