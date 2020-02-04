@@ -756,11 +756,6 @@ PrefabInstance:
       propertyPath: isUnstable
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4483926241644694833, guid: b2036c1dc79ea264b8277a1f75515048,
-        type: 3}
-      propertyPath: m_Layer
-      value: 16
-      objectReference: {fileID: 0}
     - target: {fileID: 7512150560063182884, guid: b2036c1dc79ea264b8277a1f75515048,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
