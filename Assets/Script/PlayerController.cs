@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public Material lightMaterial;
     public Material shadowMaterial;
 
+    public bool isCarryingCaisse = false;
 
     public PlayerController otherPlayer;
 
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
         {
             foreach (IInteractable item in itemToInteractWith)
             {
+                Debug.Log(item);
                 item.Interact(this);
             }
         }
@@ -128,15 +130,21 @@ public class PlayerController : MonoBehaviour
 
         if (playerNumber == 1 && Input.GetButtonDown("p" + playerNumber + "_Jump") && !hasDoubleJumped && hasJumped)
         {
-            hasDoubleJumped = true;
-            moveDirection.y = jumpSpeed;
+            if(!isCarryingCaisse)
+            {
+                hasDoubleJumped = true;
+                moveDirection.y = jumpSpeed;
+            }
         }
 
         if (Input.GetButton("p" + playerNumber + "_Jump") && !hasJumped)
         {
-            moveDirection.y = jumpSpeed;
-            hasDoubleJumped = false;
-            hasJumped = true;
+            if(!isCarryingCaisse)
+            {
+                moveDirection.y = jumpSpeed;
+                hasDoubleJumped = false;
+                hasJumped = true;
+            }
         }
 
         if (!controller.isGrounded)
