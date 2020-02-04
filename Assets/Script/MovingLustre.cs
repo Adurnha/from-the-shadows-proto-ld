@@ -7,6 +7,7 @@ public class MovingLustre : MonoBehaviour
     public bool mustMove;
     public float speed;
     public float maxAngle;
+
     public enum Direction { Left, Right }
     public Direction direction;
 
@@ -40,4 +41,24 @@ public class MovingLustre : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        IPlatform lp = other.GetComponent<IPlatform>();
+
+        if (lp != null)
+        {
+            lp.LightSources++;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        IPlatform lp = other.GetComponent<IPlatform>();
+
+        if (lp != null)
+        {
+            lp.LightSources--;
+        }
+    }
+
 }
