@@ -12,6 +12,7 @@ public class ArmorAxe : MonoBehaviour
 
     public float cooldown;
     public float firstHitDelay;
+    public float timeDown;
 
     private bool doOnce = true;
 
@@ -50,7 +51,7 @@ public class ArmorAxe : MonoBehaviour
     IEnumerator Retour()
     {
         doOnce = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(timeDown);
         sens = Sens.Retour;
         doOnce = true;
     }
