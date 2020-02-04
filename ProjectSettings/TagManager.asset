@@ -19,6 +19,7 @@ TagManager:
   - Ray
   - DarkPlayer
   - LightPlayer
+  - Caisse
   layers:
   - Default
   - TransparentFX
