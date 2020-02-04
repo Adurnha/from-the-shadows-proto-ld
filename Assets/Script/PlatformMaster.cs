@@ -74,6 +74,7 @@ public class PlatformMaster : MonoBehaviour
                     platformPart.tag = "DarkPlatform";
                     platformPart.GetComponent<BoxCollider>().isTrigger = false;
                     platformPart.GetComponent<Renderer>().enabled = true;
+                    platformPart.gameObject.layer = 9;
 
                     if (platformAttributes.isUnstable)
                     {
@@ -94,6 +95,7 @@ public class PlatformMaster : MonoBehaviour
                     platformPart.tag = "LightPlatform";
                     platformPart.GetComponent<BoxCollider>().isTrigger = true;
                     platformPart.GetComponent<Renderer>().enabled = false;
+                    platformPart.gameObject.layer = 15;
 
                     if (platformAttributes.isUnstable)
                     {

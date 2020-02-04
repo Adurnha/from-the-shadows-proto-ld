@@ -46,10 +46,10 @@ public class PrismGrosBoss : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other);
         if (other.gameObject.tag == "Ray")
         {
-            raysOnPrism++;
+            Debug.Log(other.gameObject);
+            //raysOnPrism++;
         }
     }
 
@@ -57,7 +57,8 @@ public class PrismGrosBoss : MonoBehaviour
     {
         if (other.gameObject.tag == "Ray")
         {
-            raysOnPrism--;       
+            Debug.Log(other.gameObject);
+            //raysOnPrism--;
         }
     }
 }
