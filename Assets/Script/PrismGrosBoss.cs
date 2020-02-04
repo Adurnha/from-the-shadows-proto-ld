@@ -48,8 +48,7 @@ public class PrismGrosBoss : MonoBehaviour
     {
         if (other.gameObject.tag == "Ray")
         {
-            Debug.Log(other.gameObject);
-            //raysOnPrism++;
+            raysOnPrism++;
         }
     }
 
@@ -57,8 +56,7 @@ public class PrismGrosBoss : MonoBehaviour
     {
         if (other.gameObject.tag == "Ray")
         {
-            Debug.Log(other.gameObject);
-            //raysOnPrism--;
+            raysOnPrism--;
         }
     }
 }
