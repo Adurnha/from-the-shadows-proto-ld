@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IInteractable
 {
     void Interact(PlayerController playerController);
+    void InteractAutreSens(PlayerController playerController);
 }

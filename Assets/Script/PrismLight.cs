@@ -35,9 +35,7 @@ public class PrismLight : MonoBehaviour, IPlatform
 
     void SpawnRay(int index)
     {
-        rays[index] = Instantiate(rayPrefab);
-        rays[index].transform.parent = this.transform;
-        rays[index].transform.localPosition = new Vector3(0, 0, 0);
+        rays[index] = Instantiate(rayPrefab, transform.position, Quaternion.identity, transform);
         rays[index].transform.localScale = new Vector3(0, 0, 0);
     }
 
@@ -73,7 +71,7 @@ public class PrismLight : MonoBehaviour, IPlatform
 
     void ResetRay(int index)
     {
-        rays[index].transform.position = new Vector3(0, 0, 0);
+        rays[index].transform.position = transform.position;
         rays[index].transform.localScale = new Vector3(0, 0, 0);
     }
 

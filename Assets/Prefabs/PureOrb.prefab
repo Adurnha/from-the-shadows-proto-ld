@@ -104,7 +104,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 2
-  m_Color: {r: 1, g: 0.6437318, b: 0.023584902, a: 1}
+  m_Color: {r: 255, g: 164, b: 6, a: 1}
   m_Intensity: 2
   m_Range: 5
   m_SpotAngle: 30
@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 5728892188988256597}
   - component: {fileID: 5728892188988256598}
   - component: {fileID: 1794851475}
+  - component: {fileID: 6619290220202267343}
   m_Layer: 14
   m_Name: PureOrb
   m_TagString: Torch
@@ -293,6 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isShadow: 0
   shadowMaterial: {fileID: 2100000, guid: 3b59a0e2a0d861943a4facb3058bc6fb, type: 2}
+  lightMaterial: {fileID: 2100000, guid: 89f3b176071bd9142981b0dc0d8ab390, type: 2}
 --- !u!54 &5728892188988256598
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -322,3 +324,15 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6619290220202267343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5728892188988256587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03258b4e130836d4fb0aaed634ffa8d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
