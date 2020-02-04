@@ -55,12 +55,14 @@ public class PlatformPart : MonoBehaviour, IPlatform
         {
             collider.isTrigger = false;
             renderer.enabled = true;
+            gameObject.layer = 9;
         }
 
         if (this.tag == "DarkPlatform")
         {
             collider.isTrigger = true;
             renderer.enabled = false;
+            gameObject.layer = 15;
         }
 
     }
@@ -70,12 +72,14 @@ public class PlatformPart : MonoBehaviour, IPlatform
         {
             collider.isTrigger = true;
             renderer.enabled = false;
+            gameObject.layer = 15;
         }
 
         if (this.tag == "DarkPlatform")
         {
             collider.isTrigger = false;
             renderer.enabled = true;
+            gameObject.layer = 9;
         }
     }
 }

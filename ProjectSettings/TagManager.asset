@@ -36,8 +36,8 @@ TagManager:
   - IgnoreCollisions
   - Mecanism
   - Interactable
-  - 
-  - 
+  - PlatformNotVisible
+  - PlatformFallingCollider
   - 
   - 
   - 
