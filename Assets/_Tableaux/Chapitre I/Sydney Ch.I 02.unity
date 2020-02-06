@@ -531,6 +531,11 @@ PrefabInstance:
       propertyPath: mecanism
       value: 
       objectReference: {fileID: 1062996526}
+    - target: {fileID: 9217422747294642119, guid: 74fcc29895e55644285935e9cfd98999,
+        type: 3}
+      propertyPath: timer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74fcc29895e55644285935e9cfd98999, type: 3}
 --- !u!4 &168478101 stripped
@@ -3326,6 +3331,11 @@ PrefabInstance:
       propertyPath: mecanism
       value: 
       objectReference: {fileID: 929827373}
+    - target: {fileID: 9217422747294642119, guid: 74fcc29895e55644285935e9cfd98999,
+        type: 3}
+      propertyPath: timer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74fcc29895e55644285935e9cfd98999, type: 3}
 --- !u!1001 &1319958798
