@@ -7,6 +7,9 @@ public class LightDetector : MonoBehaviour
     [SerializeField]
     Mecanism mecanism;
 
+    [SerializeField]
+    Mecanism mecanism2;
+
     private bool isActivated = false;
 
     public void Activate()
@@ -15,6 +18,9 @@ public class LightDetector : MonoBehaviour
         {
             Debug.Log("Activated");
             mecanism.ActivateMecanism();
+
+            if (mecanism2 != null)
+                mecanism2.ActivateMecanism();
             isActivated = true;
         }
     }
@@ -25,6 +31,10 @@ public class LightDetector : MonoBehaviour
         {
             Debug.Log("Deactivated");
             mecanism.DeactivateMecanism();
+
+            if (mecanism2 != null)
+                mecanism2.DeactivateMecanism();
+
             isActivated = false;
         }
     }
