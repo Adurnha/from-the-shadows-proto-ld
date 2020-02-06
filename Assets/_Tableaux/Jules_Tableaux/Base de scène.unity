@@ -151,7 +151,7 @@ PrefabInstance:
     - target: {fileID: 820831177860694900, guid: 656414021f5165b44b5dfd014cf1b760,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.818316
+      value: 24.18
       objectReference: {fileID: 0}
     - target: {fileID: 820831177860694900, guid: 656414021f5165b44b5dfd014cf1b760,
         type: 3}
@@ -1597,7 +1597,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1908,7 +1908,7 @@ PrefabInstance:
     - target: {fileID: 6708682929365967310, guid: 7add887fe9ef6c3418e9ee01a696a3ad,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.818316
+      value: 24.176
       objectReference: {fileID: 0}
     - target: {fileID: 6708682929365967310, guid: 7add887fe9ef6c3418e9ee01a696a3ad,
         type: 3}
