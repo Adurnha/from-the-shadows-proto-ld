@@ -7,6 +7,9 @@ public class Lever : MonoBehaviour, IInteractable
     [SerializeField]
     Mecanism mecanism;
 
+    [SerializeField]
+    Mecanism mecanism2;
+
     private bool isActivated = false;
     public void InteractAutreSens(PlayerController playerController) { }
 
@@ -16,11 +19,18 @@ public class Lever : MonoBehaviour, IInteractable
         {
             isActivated = false;
             mecanism.DeactivateMecanism();
+
+            if(mecanism2 != null)
+                mecanism2.DeactivateMecanism();
         }
         else if (!isActivated)
         {
             isActivated = true;
             mecanism.ActivateMecanism();
+
+            if (mecanism2 != null)
+                mecanism2.ActivateMecanism();
+
         }
     }
 }

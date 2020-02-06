@@ -20,6 +20,7 @@ TagManager:
   - DarkPlayer
   - LightPlayer
   - Caisse
+  - MovingWall
   layers:
   - Default
   - TransparentFX

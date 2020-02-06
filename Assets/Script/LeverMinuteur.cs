@@ -8,6 +8,9 @@ public class LeverMinuteur : MonoBehaviour, IInteractable
     [SerializeField]
     Mecanism mecanism;
 
+    [SerializeField]
+    Mecanism mecanism2;
+
     public int timer = 5;
 
     private bool isActivated = false;
@@ -26,6 +29,9 @@ public class LeverMinuteur : MonoBehaviour, IInteractable
             minuteurText.transform.parent.gameObject.SetActive(false);
 
             mecanism.DeactivateMecanism();
+
+            if (mecanism2 != null)
+                mecanism2.DeactivateMecanism();
         }
         else if (!isActivated)
         {
@@ -36,6 +42,9 @@ public class LeverMinuteur : MonoBehaviour, IInteractable
             minuteurText.transform.parent.gameObject.SetActive(true);
 
             mecanism.ActivateMecanism();
+
+            if (mecanism2 != null)
+                mecanism2.ActivateMecanism();
 
             StartCoroutine(CountDown());
         }
@@ -59,6 +68,10 @@ public class LeverMinuteur : MonoBehaviour, IInteractable
                 minuteurText.transform.parent.gameObject.SetActive(false);
                 isActivated = false;
                 mecanism.DeactivateMecanism();
+
+                if (mecanism2 != null)
+                    mecanism2.DeactivateMecanism();
+
             }
         }
     }
