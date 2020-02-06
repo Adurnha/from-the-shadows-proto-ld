@@ -11,7 +11,7 @@ public class DoorMecanism : Mecanism
 
     public Direction direction = Direction.Up;
 
-    public int activatedTimes = 0;
+    private int activatedTimes = 0;
 
     private void Start()
     {
