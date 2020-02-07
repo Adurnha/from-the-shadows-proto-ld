@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6009415163517736827}
   - component: {fileID: 6009415163517736826}
   - component: {fileID: 6009415163517736825}
+  - component: {fileID: 7884666436750330528}
   m_Layer: 0
   m_Name: MovingWall
   m_TagString: MovingWall
@@ -92,3 +93,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7884666436750330528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6009415163517736824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac6fa88445732447a4912cd6a8685e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  movementLength: 0
+  direction: 0
+  isChildOf: 0
+  movement: 0
