@@ -10,6 +10,9 @@ public class Lever : MonoBehaviour, IInteractable
     [SerializeField]
     Mecanism mecanism2;
 
+    [SerializeField]
+    Mecanism mecanism3;
+
     private bool isActivated = false;
     public void InteractAutreSens(PlayerController playerController) { }
 
@@ -22,6 +25,10 @@ public class Lever : MonoBehaviour, IInteractable
 
             if(mecanism2 != null)
                 mecanism2.DeactivateMecanism();
+
+            if (mecanism3 != null)
+                mecanism3.DeactivateMecanism();
+
         }
         else if (!isActivated)
         {
@@ -30,6 +37,10 @@ public class Lever : MonoBehaviour, IInteractable
 
             if (mecanism2 != null)
                 mecanism2.ActivateMecanism();
+
+            if (mecanism3 != null)
+                mecanism3.ActivateMecanism();
+
 
         }
     }
