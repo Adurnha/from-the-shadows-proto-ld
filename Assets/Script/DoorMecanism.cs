@@ -7,7 +7,7 @@ public class DoorMecanism : Mecanism
     Vector3 targetedPosition;
     Vector3 basePosition;
 
-    public enum Direction { Up, Down, Left, Right };
+    public enum Direction { Up, Down, Left, Right, Back };
 
     public Direction direction = Direction.Up;
 
@@ -42,6 +42,9 @@ public class DoorMecanism : Mecanism
                     break;
                 case Direction.Right:
                     targetedPosition = new Vector3(basePosition.x + this.transform.localScale.x, basePosition.y, basePosition.z);
+                    break;
+                case Direction.Back:
+                    targetedPosition = new Vector3(basePosition.x, basePosition.y, basePosition.z + this.transform.localScale.z);
                     break;
                 default:
                     break;
