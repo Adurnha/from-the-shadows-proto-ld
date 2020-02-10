@@ -50,8 +50,22 @@ public class PlayerController : MonoBehaviour
         controller = this.GetComponent<CharacterController>();
     }
 
+    IEnumerator DisableAttackZone()
+    {
+        yield return new WaitForSeconds(0.2f);
+        this.transform.GetChild(3).gameObject.SetActive(false);
+    }
+
     private void Update()
     {
+        if (playerNumber == 2 && Input.GetButtonDown("p" + playerNumber + "_Attack"))
+        {
+            this.transform.GetComponent<Animator>().SetTrigger("Attack");
+            this.transform.GetChild(3).gameObject.SetActive(true);
+
+            StartCoroutine(DisableAttackZone());
+        }
+
         if (Input.GetButtonDown("p" + playerNumber + "_Interact"))
         {
             foreach (IInteractable item in itemToInteractWith)
@@ -173,6 +187,14 @@ public class PlayerController : MonoBehaviour
             moveDirection.y -= gravityForce * Time.deltaTime;
         }
 
+        if (moveDirection.x > 0)
+        {
+            this.transform.eulerAngles = new Vector3(0, 90, 0);
+        }
+        if (moveDirection.x < 0)
+        {
+            this.transform.eulerAngles = new Vector3(0, -90, 0);
+        }
         controller.Move(moveDirection * Time.deltaTime);
     }
 

@@ -21,6 +21,8 @@ TagManager:
   - LightPlayer
   - Caisse
   - MovingWall
+  - Sword
+  - Ghost
   layers:
   - Default
   - TransparentFX
@@ -39,8 +41,8 @@ TagManager:
   - Interactable
   - PlatformNotVisible
   - PlatformFallingCollider
-  - 
-  - 
+  - Sword
+  - Enemy
   - 
   - 
   - 
