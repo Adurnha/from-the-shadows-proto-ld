@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private bool hasDoubleJumped = false;
     private bool hasJumped = false;
-
+    private bool canJump = false;
     public enum SwitchType { SameCharacter, BetweenTwoCharacters };
     public SwitchType switchType;
 
@@ -124,20 +124,28 @@ public class PlayerController : MonoBehaviour
         if (controller.isGrounded)
         {
             hasJumped = false;
+            hasDoubleJumped = false;
+            canJump = true;
             moveDirection = new Vector3(Input.GetAxis("p" + playerNumber + "_Horizontal"), 0.0f);
             moveDirection *= moveSpeed;
         }
 
-        if (playerNumber == 1 && Input.GetButtonDown("p" + playerNumber + "_Jump") && !hasDoubleJumped && hasJumped)
+        if (playerNumber == 1 && Input.GetButtonDown("p" + playerNumber + "_Jump"))
         {
-            if(!isCarryingCaisse)
+            if (canJump && !isCarryingCaisse)
             {
-                hasDoubleJumped = true;
                 moveDirection.y = jumpSpeed;
+                hasDoubleJumped = false;
+                hasJumped = true;
+            }
+            else if(!hasDoubleJumped)
+            {
+                moveDirection.y = jumpSpeed;
+                hasDoubleJumped = true;
             }
         }
 
-        if (Input.GetButton("p" + playerNumber + "_Jump") && !hasJumped)
+        if (playerNumber == 2 && Input.GetButton("p" + playerNumber + "_Jump") && !hasJumped && canJump)
         {
             if(!isCarryingCaisse)
             {
@@ -149,6 +157,8 @@ public class PlayerController : MonoBehaviour
 
         if (!controller.isGrounded)
         {
+            canJump = false;
+
             moveDirection.x = Input.GetAxis("p" + playerNumber + "_Horizontal") * moveSpeed;
             moveDirection.y -= gravityForce * Time.deltaTime;
         }
