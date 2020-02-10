@@ -18,7 +18,11 @@ public class PlayerController : MonoBehaviour
 
     private bool hasDoubleJumped = false;
     private bool hasJumped = false;
-    private bool canJump = false;
+
+    public bool canJump = false;
+
+    public float timeInAir = 0f;
+
     public enum SwitchType { SameCharacter, BetweenTwoCharacters };
     public SwitchType switchType;
 
@@ -123,6 +127,7 @@ public class PlayerController : MonoBehaviour
 
         if (controller.isGrounded)
         {
+            timeInAir = 0f;
             hasJumped = false;
             hasDoubleJumped = false;
             canJump = true;
@@ -157,7 +162,12 @@ public class PlayerController : MonoBehaviour
 
         if (!controller.isGrounded)
         {
-            canJump = false;
+            timeInAir += Time.deltaTime;
+
+            if(timeInAir >= 0.12f)
+            {
+                canJump = false;
+            }
 
             moveDirection.x = Input.GetAxis("p" + playerNumber + "_Horizontal") * moveSpeed;
             moveDirection.y -= gravityForce * Time.deltaTime;
