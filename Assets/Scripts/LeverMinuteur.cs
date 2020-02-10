@@ -11,6 +11,9 @@ public class LeverMinuteur : MonoBehaviour, IInteractable
     [SerializeField]
     Mecanism mecanism2;
 
+    [SerializeField]
+    Mecanism mecanism3;
+
     public int timer = 5;
 
     private bool isActivated = false;
@@ -32,6 +35,10 @@ public class LeverMinuteur : MonoBehaviour, IInteractable
 
             if (mecanism2 != null)
                 mecanism2.DeactivateMecanism();
+
+            if (mecanism3 != null)
+                mecanism3.DeactivateMecanism();
+
         }
         else if (!isActivated)
         {
@@ -45,6 +52,10 @@ public class LeverMinuteur : MonoBehaviour, IInteractable
 
             if (mecanism2 != null)
                 mecanism2.ActivateMecanism();
+
+            if (mecanism3 != null)
+                mecanism3.ActivateMecanism();
+
 
             StartCoroutine(CountDown());
         }
@@ -71,6 +82,10 @@ public class LeverMinuteur : MonoBehaviour, IInteractable
 
                 if (mecanism2 != null)
                     mecanism2.DeactivateMecanism();
+
+                if (mecanism3 != null)
+                    mecanism3.DeactivateMecanism();
+
 
             }
         }
