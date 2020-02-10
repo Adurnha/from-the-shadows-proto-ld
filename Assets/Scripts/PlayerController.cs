@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     private bool hasDoubleJumped = false;
     private bool hasJumped = false;
 
+    public bool canJump = false;
+
+    public float timeInAir = 0f;
+
     public enum SwitchType { SameCharacter, BetweenTwoCharacters };
     public SwitchType switchType;
 
@@ -123,21 +127,30 @@ public class PlayerController : MonoBehaviour
 
         if (controller.isGrounded)
         {
+            timeInAir = 0f;
             hasJumped = false;
+            hasDoubleJumped = false;
+            canJump = true;
             moveDirection = new Vector3(Input.GetAxis("p" + playerNumber + "_Horizontal"), 0.0f);
             moveDirection *= moveSpeed;
         }
 
-        if (playerNumber == 1 && Input.GetButtonDown("p" + playerNumber + "_Jump") && !hasDoubleJumped && hasJumped)
+        if (playerNumber == 1 && Input.GetButtonDown("p" + playerNumber + "_Jump"))
         {
-            if(!isCarryingCaisse)
+            if (canJump && !isCarryingCaisse)
             {
-                hasDoubleJumped = true;
                 moveDirection.y = jumpSpeed;
+                hasDoubleJumped = false;
+                hasJumped = true;
+            }
+            else if(!hasDoubleJumped)
+            {
+                moveDirection.y = jumpSpeed;
+                hasDoubleJumped = true;
             }
         }
 
-        if (Input.GetButton("p" + playerNumber + "_Jump") && !hasJumped)
+        if (playerNumber == 2 && Input.GetButton("p" + playerNumber + "_Jump") && !hasJumped && canJump)
         {
             if(!isCarryingCaisse)
             {
@@ -149,6 +162,13 @@ public class PlayerController : MonoBehaviour
 
         if (!controller.isGrounded)
         {
+            timeInAir += Time.deltaTime;
+
+            if(timeInAir >= 0.12f)
+            {
+                canJump = false;
+            }
+
             moveDirection.x = Input.GetAxis("p" + playerNumber + "_Horizontal") * moveSpeed;
             moveDirection.y -= gravityForce * Time.deltaTime;
         }
