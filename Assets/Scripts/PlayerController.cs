@@ -45,6 +45,12 @@ public class PlayerController : MonoBehaviour
 
     private bool hasSwitched = false;
 
+    public int nbController = 0;
+
+    public string firstController;
+    public string secondController;
+
+
     private void Start()
     {
         controller = this.GetComponent<CharacterController>();
@@ -58,12 +64,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        foreach(string controller in Input.GetJoystickNames())
-        {
-            Debug.Log(controller);
-            Debug.Log(controller == "Controller (Xbox One For Windows)");
-            Debug.Log(controller == "Controller (XBOX 360 For Windows)");
-        }
+        if (Input.GetJoystickNames()[0] != "")
+            firstController = Input.GetJoystickNames()[0];
+
+        if (Input.GetJoystickNames()[1] != "")
+            secondController = Input.GetJoystickNames()[1];
+
 
         if (playerNumber == 2 && Input.GetButtonDown("p" + playerNumber + "_Attack"))
         {
@@ -90,61 +96,61 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (playerNumber == 1 && Input.GetKeyDown(KeyCode.C))
-        {
-            isShadowPlayer = !isShadowPlayer;
-        }
+        //if (playerNumber == 1 && Input.GetKeyDown(KeyCode.C))
+        //{
+        //    isShadowPlayer = !isShadowPlayer;
+        //}
 
-        if (isShadowPlayer != previouslyShadowPlayer)
-        {
-            if (switchType == SwitchType.SameCharacter)
-            {
-                this.transform.GetChild(3).gameObject.SetActive(!isShadowPlayer);
+        //if (isShadowPlayer != previouslyShadowPlayer)
+        //{
+        //    if (switchType == SwitchType.SameCharacter)
+        //    {
+        //        this.transform.GetChild(3).gameObject.SetActive(!isShadowPlayer);
 
-                if (isShadowPlayer)
-                {
-                    this.GetComponent<MeshRenderer>().material = shadowMaterial;
-                    this.transform.GetChild(0).GetComponent<MeshRenderer>().material = shadowMaterial;
-                    this.transform.GetChild(1).GetComponent<MeshRenderer>().material = shadowMaterial;
-                    this.transform.GetChild(2).GetComponent<MeshRenderer>().material = shadowMaterial;
-                }
-                else
-                {
-                    this.GetComponent<MeshRenderer>().material = lightMaterial;
-                    this.transform.GetChild(0).GetComponent<MeshRenderer>().material = lightMaterial;
-                    this.transform.GetChild(1).GetComponent<MeshRenderer>().material = lightMaterial;
-                    this.transform.GetChild(2).GetComponent<MeshRenderer>().material = lightMaterial;
-                }
-            }
+        //        if (isShadowPlayer)
+        //        {
+        //            this.GetComponent<MeshRenderer>().material = shadowMaterial;
+        //            this.transform.GetChild(0).GetComponent<MeshRenderer>().material = shadowMaterial;
+        //            this.transform.GetChild(1).GetComponent<MeshRenderer>().material = shadowMaterial;
+        //            this.transform.GetChild(2).GetComponent<MeshRenderer>().material = shadowMaterial;
+        //        }
+        //        else
+        //        {
+        //            this.GetComponent<MeshRenderer>().material = lightMaterial;
+        //            this.transform.GetChild(0).GetComponent<MeshRenderer>().material = lightMaterial;
+        //            this.transform.GetChild(1).GetComponent<MeshRenderer>().material = lightMaterial;
+        //            this.transform.GetChild(2).GetComponent<MeshRenderer>().material = lightMaterial;
+        //        }
+        //    }
 
-            if (switchType == SwitchType.BetweenTwoCharacters && !hasSwitched)
-            {
-                //if(this.tag == "LightPlayer")
-                //{
-                //    Debug.Log("LP " + this.tag);
-                //    otherPlayer = GameObject.FindGameObjectWithTag("DarkPlayer").GetComponent<PlayerController>();
+        //    if (switchType == SwitchType.BetweenTwoCharacters && !hasSwitched)
+        //    {
+        //        //if(this.tag == "LightPlayer")
+        //        //{
+        //        //    Debug.Log("LP " + this.tag);
+        //        //    otherPlayer = GameObject.FindGameObjectWithTag("DarkPlayer").GetComponent<PlayerController>();
 
-                //    this.playerNumber = 2;
-                //    otherPlayer.playerNumber = 1;
+        //        //    this.playerNumber = 2;
+        //        //    otherPlayer.playerNumber = 1;
 
-                //    hasSwitched = true;
-                //}
+        //        //    hasSwitched = true;
+        //        //}
 
-                //if(this.tag == "DarkPlayer")
-                //{
-                //    Debug.Log("DP " + this.tag);
-                //    otherPlayer = GameObject.FindGameObjectWithTag("LightPlayer").GetComponent<PlayerController>();
+        //        //if(this.tag == "DarkPlayer")
+        //        //{
+        //        //    Debug.Log("DP " + this.tag);
+        //        //    otherPlayer = GameObject.FindGameObjectWithTag("LightPlayer").GetComponent<PlayerController>();
 
-                //    this.playerNumber = 2;
-                //    otherPlayer.playerNumber = 1;
+        //        //    this.playerNumber = 2;
+        //        //    otherPlayer.playerNumber = 1;
 
-                //    hasSwitched = true;
-                //}
-            }
+        //        //    hasSwitched = true;
+        //        //}
+        //    }
 
-            previouslyShadowPlayer = isShadowPlayer;
-            hasSwitched = false;
-        }
+        //    previouslyShadowPlayer = isShadowPlayer;
+        //    hasSwitched = false;
+        //}
 
         if (controller.isGrounded)
         {
@@ -153,12 +159,18 @@ public class PlayerController : MonoBehaviour
             hasDoubleJumped = false;
             canJump = true;
 
-            moveDirection = new Vector3(Input.GetAxis("p" + playerNumber + "_Horizontal"), 0.0f);
+            if(playerNumber == 1 && Input.GetJoystickNames()[0] == firstController)
+                moveDirection = new Vector3(Input.GetAxis("p1_Horizontal_joystick"), 0.0f);
+
+            else if(playerNumber == 2 && Input.GetJoystickNames()[1] == secondController)
+                moveDirection = new Vector3(Input.GetAxis("p2_Horizontal_joystick"), 0.0f);
+            else
+                moveDirection = new Vector3(Input.GetAxis("p" + playerNumber + "_Horizontal"), 0.0f);
 
             moveDirection *= moveSpeed;
         }
 
-        if (playerNumber == 1 && Input.GetButtonDown("p" + playerNumber + "_Jump"))
+        if (playerNumber == 1 && (Input.GetButtonDown("p1_Jump")))
         {
             if (canJump && !isCarryingCaisse)
             {
@@ -173,7 +185,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (playerNumber == 2 && Input.GetButton("p" + playerNumber + "_Jump") && !hasJumped && canJump)
+        if (playerNumber == 2 && Input.GetButton("p2_Jump") && !hasJumped && canJump)
         {
             if (!isCarryingCaisse)
             {
@@ -192,7 +204,14 @@ public class PlayerController : MonoBehaviour
                 canJump = false;
             }
 
-            moveDirection.x = Input.GetAxis("p" + playerNumber + "_Horizontal") * moveSpeed;
+            if (playerNumber == 1 && Input.GetJoystickNames()[0] == firstController)
+                moveDirection.x = Input.GetAxis("p1_Horizontal_joystick") * moveSpeed;
+
+            else if (playerNumber == 2 && Input.GetJoystickNames()[1] == secondController)
+                moveDirection.x = Input.GetAxis("p2_Horizontal_joystick") * moveSpeed;
+            else
+                moveDirection.x = Input.GetAxis("p" + playerNumber + "_Horizontal") * moveSpeed;
+
 
 
             moveDirection.y -= gravityForce * Time.deltaTime;
