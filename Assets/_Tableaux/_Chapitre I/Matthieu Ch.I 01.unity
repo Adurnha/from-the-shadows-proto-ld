@@ -554,7 +554,7 @@ PrefabInstance:
     - target: {fileID: 620430587815521695, guid: 3a31251ca788e164ebcd78c31f2b050e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 40
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 620430587815521695, guid: 3a31251ca788e164ebcd78c31f2b050e,
         type: 3}
@@ -1527,7 +1527,7 @@ PrefabInstance:
     - target: {fileID: 9217422747294642119, guid: 74fcc29895e55644285935e9cfd98999,
         type: 3}
       propertyPath: timer
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9217422747294642119, guid: 74fcc29895e55644285935e9cfd98999,
         type: 3}
@@ -2887,7 +2887,7 @@ Transform:
   m_LocalScale: {x: 1.619, y: 0.12, z: 1}
   m_Children: []
   m_Father: {fileID: 2098795577}
-  m_RootOrder: 34
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1653741247
 PrefabInstance:
@@ -3637,7 +3637,7 @@ PrefabInstance:
     - target: {fileID: 1191873511643881227, guid: b2036c1dc79ea264b8277a1f75515048,
         type: 3}
       propertyPath: m_RootOrder
-      value: 41
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1191873511643881227, guid: b2036c1dc79ea264b8277a1f75515048,
         type: 3}
@@ -3806,6 +3806,7 @@ Transform:
   - {fileID: 1825648784}
   - {fileID: 869317990}
   - {fileID: 2000193607}
+  - {fileID: 1595900205}
   - {fileID: 1050485739}
   - {fileID: 1689866604}
   - {fileID: 2093407004}
@@ -3818,11 +3819,10 @@ Transform:
   - {fileID: 945590335}
   - {fileID: 969134791}
   - {fileID: 613747734}
-  - {fileID: 1595900205}
   - {fileID: 461048212}
   - {fileID: 1270558803}
-  - {fileID: 764948799}
   - {fileID: 2110906452}
+  - {fileID: 764948799}
   - {fileID: 412784743}
   - {fileID: 2084820840}
   m_Father: {fileID: 0}
@@ -3918,5 +3918,5 @@ Transform:
   m_LocalScale: {x: 0.08600001, y: 0.08600001, z: 1}
   m_Children: []
   m_Father: {fileID: 2098795577}
-  m_RootOrder: 38
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
