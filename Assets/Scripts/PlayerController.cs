@@ -64,13 +64,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetJoystickNames()[0] != "")
-            firstController = Input.GetJoystickNames()[0];
-
-        if (Input.GetJoystickNames()[1] != "")
-            secondController = Input.GetJoystickNames()[1];
-
-
         if (playerNumber == 2 && Input.GetButtonDown("p" + playerNumber + "_Attack"))
         {
             this.transform.GetComponent<Animator>().SetTrigger("Attack");
