@@ -204,10 +204,10 @@ public class PlayerController : MonoBehaviour
                 canJump = false;
             }
 
-            if (playerNumber == 1 && Input.GetJoystickNames()[0] == firstController)
+            if (playerNumber == 1 && Input.GetJoystickNames()[0] == "Controller (Xbox One For Windows)")
                 moveDirection.x = Input.GetAxis("p1_Horizontal_joystick") * moveSpeed;
 
-            else if (playerNumber == 2 && Input.GetJoystickNames()[1] == secondController)
+            else if (playerNumber == 2 && Input.GetJoystickNames()[1] == "Controller (XBOX 360 For Windows)")
                 moveDirection.x = Input.GetAxis("p2_Horizontal_joystick") * moveSpeed;
             else
                 moveDirection.x = Input.GetAxis("p" + playerNumber + "_Horizontal") * moveSpeed;
