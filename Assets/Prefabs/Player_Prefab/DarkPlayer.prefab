@@ -140,7 +140,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264185557400877189}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.000058785074}
+  m_LocalRotation: {x: -0, y: -1, z: 0, w: -0.00006085739}
   m_LocalPosition: {x: 14.83, y: -4.5500007, z: -0.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -251,6 +251,9 @@ MonoBehaviour:
   shadowMaterial: {fileID: 2100000, guid: 3f3680543047cc54695f0bb5ce2f1e63, type: 2}
   isCarryingCaisse: 0
   otherPlayer: {fileID: 0}
+  nbController: 0
+  firstController: 
+  secondController: 
 --- !u!135 &4550776505286856471
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -517,7 +520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3696628013351114526
 Transform:
   m_ObjectHideFlags: 0
