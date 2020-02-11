@@ -58,6 +58,13 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        foreach(string controller in Input.GetJoystickNames())
+        {
+            Debug.Log(controller);
+            Debug.Log(controller == "Controller (Xbox One For Windows)");
+            Debug.Log(controller == "Controller (XBOX 360 For Windows)");
+        }
+
         if (playerNumber == 2 && Input.GetButtonDown("p" + playerNumber + "_Attack"))
         {
             this.transform.GetComponent<Animator>().SetTrigger("Attack");
@@ -145,7 +152,9 @@ public class PlayerController : MonoBehaviour
             hasJumped = false;
             hasDoubleJumped = false;
             canJump = true;
+
             moveDirection = new Vector3(Input.GetAxis("p" + playerNumber + "_Horizontal"), 0.0f);
+
             moveDirection *= moveSpeed;
         }
 
@@ -157,7 +166,7 @@ public class PlayerController : MonoBehaviour
                 hasDoubleJumped = false;
                 hasJumped = true;
             }
-            else if(!hasDoubleJumped)
+            else if (!hasDoubleJumped)
             {
                 moveDirection.y = jumpSpeed;
                 hasDoubleJumped = true;
@@ -166,7 +175,7 @@ public class PlayerController : MonoBehaviour
 
         if (playerNumber == 2 && Input.GetButton("p" + playerNumber + "_Jump") && !hasJumped && canJump)
         {
-            if(!isCarryingCaisse)
+            if (!isCarryingCaisse)
             {
                 moveDirection.y = jumpSpeed;
                 hasDoubleJumped = false;
@@ -178,12 +187,14 @@ public class PlayerController : MonoBehaviour
         {
             timeInAir += Time.deltaTime;
 
-            if(timeInAir >= 0.12f)
+            if (timeInAir >= 0.12f)
             {
                 canJump = false;
             }
 
             moveDirection.x = Input.GetAxis("p" + playerNumber + "_Horizontal") * moveSpeed;
+
+
             moveDirection.y -= gravityForce * Time.deltaTime;
         }
 
