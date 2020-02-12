@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mecanism: {fileID: 0}
+  mecanism2: {fileID: 0}
 --- !u!65 &413525514900027974
 BoxCollider:
   m_ObjectHideFlags: 0

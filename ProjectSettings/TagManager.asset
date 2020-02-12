@@ -19,6 +19,11 @@ TagManager:
   - Ray
   - DarkPlayer
   - LightPlayer
+  - Caisse
+  - MovingWall
+  - Sword
+  - Ghost
+  - Level
   layers:
   - Default
   - TransparentFX
@@ -35,10 +40,10 @@ TagManager:
   - IgnoreCollisions
   - Mecanism
   - Interactable
-  - 
-  - 
-  - 
-  - 
+  - PlatformNotVisible
+  - PlatformFallingCollider
+  - Sword
+  - Enemy
   - 
   - 
   - 

@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 5319818935430082160}
   - component: {fileID: 3871210521809006518}
   - component: {fileID: 6121357448017665450}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: FallingCollider
   m_TagString: LightPlatform
   m_Icon: {fileID: 0}
