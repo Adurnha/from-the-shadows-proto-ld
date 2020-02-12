@@ -14,12 +14,27 @@ public class SetCamera : MonoBehaviour
     private CameraManager cameraManager;
 
     private bool mustMove = false;
+    private bool spawned = false;
 
+    public List<GameObject> levelsToSpawn = new List<GameObject>();
 
     private void Start()
     {
         camera = GameObject.FindGameObjectWithTag("MainCamera");
         cameraManager = camera.GetComponent<CameraManager>();
+    }
+
+    private void SpawnLevels()
+    {   
+        foreach(GameObject level in GameObject.FindGameObjectsWithTag("Level"))
+        {
+            level.SetActive(false);
+        }
+
+        foreach(GameObject levelToSpawn in levelsToSpawn)
+        {
+            levelToSpawn.SetActive(true);
+        }
     }
 
     private void Update()
@@ -34,17 +49,30 @@ public class SetCamera : MonoBehaviour
             this.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(false);
 
             cameraManager.cameraStartingPosition = cameraReference.transform.position;
+
+            if(!spawned)
+            {
+                SpawnLevels();
+                spawned = true;
+            }
+
+            StartCoroutine(StopMovement());
         }
 
         if(mustMove)
         {
-            camera.transform.position = Vector3.Lerp(camera.transform.position, cameraReference.transform.position, 2f * Time.deltaTime);
+            camera.transform.position = Vector3.Lerp(camera.transform.position, cameraReference.transform.position, 2.5f * Time.deltaTime);
         }
 
-        if(Vector3.Distance(camera.transform.position, cameraReference.transform.position) <= 0.2f)
+        if(mustMove && Vector3.Distance(camera.transform.position, cameraReference.transform.position) <= 0.2f)
         {
             mustMove = false;
-            Debug.Log("aaa");
         }
+    }
+
+    IEnumerator StopMovement()
+    {
+        yield return new WaitForSeconds(2.5f);
+        mustMove = false;
     }
 }

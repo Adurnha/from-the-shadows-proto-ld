@@ -23,6 +23,7 @@ TagManager:
   - MovingWall
   - Sword
   - Ghost
+  - Level
   layers:
   - Default
   - TransparentFX
