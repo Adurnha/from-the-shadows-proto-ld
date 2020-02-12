@@ -16,6 +16,8 @@ public class MovingLustre : MonoBehaviour
 
     private float angle;
 
+    private List<IPlatform> lightedPlatforms = new List<IPlatform>();
+
     private void Start()
     {
         lustreMesh = this.transform.GetChild(0);
@@ -58,6 +60,7 @@ public class MovingLustre : MonoBehaviour
 
         if (lp != null)
         {
+            lightedPlatforms.Add(lp);
             lp.LightSources++;
         }
     }
@@ -67,8 +70,17 @@ public class MovingLustre : MonoBehaviour
 
         if (lp != null)
         {
+            lightedPlatforms.Remove(lp);
             lp.LightSources--;
         }
     }
 
+    public void OnChildDisable()
+    {
+        foreach (IPlatform lp in lightedPlatforms)
+        {
+            lp.LightSources--;
+        }
+        lightedPlatforms.Clear();
+    }
 }

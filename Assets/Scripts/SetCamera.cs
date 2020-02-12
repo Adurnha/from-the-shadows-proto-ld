@@ -18,6 +18,7 @@ public class SetCamera : MonoBehaviour
 
     public List<GameObject> levelsToSpawn = new List<GameObject>();
 
+    private bool triggered = false;
     private void Start()
     {
         camera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -39,8 +40,9 @@ public class SetCamera : MonoBehaviour
 
     private void Update()
     {
-        if(this.transform.GetChild(0).GetComponent<ChildTrigger>().playerInZone >= 2)
+        if(this.transform.GetChild(0).GetComponent<ChildTrigger>().playerInZone >= 2 && !triggered)
         {
+            Debug.Log("Update");
             mustMove = true;
             cameraManager.hasControl = hasControl;
             cameraManager.isHorizontallyFixed = isHorizontallyFixed;
@@ -50,13 +52,18 @@ public class SetCamera : MonoBehaviour
 
             cameraManager.cameraStartingPosition = cameraReference.transform.position;
 
-            if(!spawned)
+            GameObject.FindGameObjectWithTag("LightPlayer").GetComponent<PlayerController>().SetSpawnPoint(transform.GetChild(2).position);
+            GameObject.FindGameObjectWithTag("DarkPlayer").GetComponent<PlayerController>().SetSpawnPoint(transform.GetChild(2).position);
+
+            if (!spawned)
             {
                 SpawnLevels();
                 spawned = true;
             }
 
             StartCoroutine(StopMovement());
+
+            triggered = true;
         }
 
         if(mustMove)

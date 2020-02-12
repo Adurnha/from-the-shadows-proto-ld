@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private Vector3 spawnPoint;
+
     [SerializeField]
     public int playerNumber = 1;
 
@@ -50,16 +52,32 @@ public class PlayerController : MonoBehaviour
     public string firstController;
     public string secondController;
 
-
     private void Start()
     {
+        SetSpawnPoint(transform.position);
         controller = this.GetComponent<CharacterController>();
+
+        if (this.tag == "LightPlayer")
+        {
+            otherPlayer = GameObject.FindGameObjectWithTag("DarkPlayer").GetComponent<PlayerController>();
+        }
+
+        if (this.tag == "DarkPlayer")
+        {
+            otherPlayer = GameObject.FindGameObjectWithTag("LightPlayer").GetComponent<PlayerController>();
+        }
+
     }
 
     IEnumerator DisableAttackZone()
     {
         yield return new WaitForSeconds(0.2f);
         this.transform.GetChild(3).gameObject.SetActive(false);
+    }
+
+    public void SetSpawnPoint(Vector3 newSpawnPoint)
+    {
+        spawnPoint = newSpawnPoint;
     }
 
     private void Update()
@@ -176,7 +194,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (playerNumber == 2 && Input.GetButton("p2_Jump") && !hasJumped && canJump)
+        if (playerNumber == 2 && Input.GetButtonDown("p2_Jump") && !hasJumped && canJump)
         {
             if (!isCarryingCaisse)
             {
@@ -214,12 +232,24 @@ public class PlayerController : MonoBehaviour
             this.transform.eulerAngles = new Vector3(0, -90, 0);
         }
         controller.Move(moveDirection * Time.deltaTime);
+
+
     }
 
     public void Kill()
     {
         Debug.Log("Player " + playerNumber + " killed.");
-        Destroy(this);
+
+        controller.enabled = false;
+        otherPlayer.controller.enabled = false;
+
+        transform.position = spawnPoint;
+        otherPlayer.transform.position = spawnPoint;
+
+        controller.enabled = true;
+        otherPlayer.controller.enabled = true;
+
+        GameObject.FindGameObjectWithTag("MainCamera").transform.position = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraManager>().cameraStartingPosition;
     }
 
     private void OnTriggerEnter(Collider other)
