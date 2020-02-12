@@ -12,7 +12,7 @@ public class CameraManager : MonoBehaviour
 
     private float playerCameraMoyenneY;
     private float playerCameraMoyenneX;
-    private Vector3 cameraStartingPosition;
+    public Vector3 cameraStartingPosition;
     public float cameraOffset;
 
     void Start()

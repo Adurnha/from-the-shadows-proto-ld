@@ -20,7 +20,6 @@ public class MovingLustre : MonoBehaviour
     {
         lustreMesh = this.transform.GetChild(0);
         chain = this.transform.GetChild(1);
-        Debug.Log(Vector3.Distance(chain.position, lustreMesh.position));
 
         chain.localScale = new Vector3(1f, Vector3.Distance(chain.position, lustreMesh.position)/2f, 1f);
     }
