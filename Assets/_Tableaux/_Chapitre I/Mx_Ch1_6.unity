@@ -218,6 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasControl: 1
   isHorizontallyFixed: 0
+  cameraStartingPosition: {x: 0, y: 0, z: 0}
   cameraOffset: 0
 --- !u!1001 &2031996849
 PrefabInstance:
@@ -369,6 +370,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mx_Ch1_6 (Avec piques)
       objectReference: {fileID: 0}
+    - target: {fileID: 6707260399209544820, guid: 619fa673e6101124ea3b7b81b179c355,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6707260399209544819, guid: 619fa673e6101124ea3b7b81b179c355,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -437,6 +443,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mx_Ch1_6 (Sans piques)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969917572083667703, guid: 6e27b6cb3fdb1ba44a1a004d46d52063,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8969917572083667702, guid: 6e27b6cb3fdb1ba44a1a004d46d52063,
         type: 3}
